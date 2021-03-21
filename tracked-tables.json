@@ -1,0 +1,98 @@
+{
+	"type": "bulk",
+	"args": [
+		{
+			"args": {
+				"name": "orders",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "menu_items",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "items",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "assignment",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "payments",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "number_order_approved",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "number_order_driver_assigned",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "number_order_payment_valid",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "number_order_validated",
+				"schema": "public"
+			},
+			"type": "track_table"
+		},
+		{
+			"args": {
+				"name": "number_orders",
+				"schema": "public"
+			},
+			"type": "track_table"
+		}
+	]
+}
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

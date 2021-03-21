@@ -1,0 +1,83 @@
+{
+	"type": "bulk",
+	"args": [
+		{
+			"type":"create_array_relationship",
+			"args":{
+				"name":"items",
+				"table": { "name":"orders", "schema":"public" },
+				"using":{
+					"foreign_key_constraint_on":{
+						"table": { "name":"items", "schema":"public" },
+						"column":"order_id"
+					}
+				}
+			}
+		},
+		{
+			"type":"create_array_relationship",
+			"args":{
+				"name":"assignments",
+				"table": { "name":"orders", "schema":"public" },
+				"using":{
+					"foreign_key_constraint_on":{
+						"table": { "name":"assignments", "schema":"public" },
+						"column":"order_id"
+					}
+				}
+			}
+		},
+		{
+			"type":"create_array_relationship",
+			"args":{
+				"name":"payments",
+				"table": { "name":"orders", "schema":"public" },
+				"using":{
+					"foreign_key_constraint_on":{
+						"table": { "name":"payments", "schema":"public" },
+						"column":"order_id"
+					}
+				}
+			}
+		},
+		{
+			"type":"create_object_relationship",
+			"args":{
+				"name":"order",
+				"table":{"name":"items","schema":"public"},
+				"using":{"foreign_key_constraint_on":"order_id"}
+			}
+		},
+		{
+			"type":"create_object_relationship",
+			"args": {
+				"name":"order",
+				"table":{"name":"assignment","schema":"public"},
+				"using":{"foreign_key_constraint_on":"order_id"}
+			}
+		},
+		{
+			"type":"create_object_relationship",
+			"args":{
+				"name":"order",
+				"table":{"name":"payments","schema":"public"},
+				"using":{"foreign_key_constraint_on":"order_id"}
+			}
+		}
+
+	]
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
