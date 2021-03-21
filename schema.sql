@@ -70,6 +70,6 @@ CREATE VIEW public.number_orders AS
   SELECT count(*) AS count
     FROM public.orders;
 
-INSERT INTO menu_items (name) values ('pizza'), ('mangoes'), ('chocolate milkshake'), ('burger'), ('burger'), ('idli');
+INSERT INTO menu_items (name) values ('pizza'), ('mangoes'), ('chocolate milkshake'), ('nachos'), ('cheese burger'), ('california burrito');
 
 COMMIT;

@@ -4,6 +4,7 @@ services:
     image: "postgres:9.6"
     environment:
       POSTGRES_PASSWORD: b0op1234
+    restart: always
     ports:
       - 5432:5432
     volumes:
@@ -26,6 +27,7 @@ services:
     image: hasura/graphql-engine:latest
     ports:
       - 8080:8080
+    restart: always
     environment: 
       HASURA_GRAPHQL_DATABASE_URL: "postgres://postgres:b0op1234@database:5432/postgres"
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
@@ -37,12 +39,25 @@ services:
     build: ./src/backend
     ports:
       - 8081:8081
+    environment: 
+      POSTGRES_CONNECTION_STRING: "postgres://postgres:b0op1234@database:5432/postgres"
     depends_on:
-      - hasura
+      - database
 
   order-app-frontend:
     build: ./src/order-app-frontend
     ports:
       - 3000:3000
+
     depends_on:
       - backend
+      - hasura
+
+  analytics-app-frontend:
+    build: ./src/analytics-app-frontend
+    ports:
+      - 3001:3000
+
+    depends_on:
+      - backend
+      - hasura

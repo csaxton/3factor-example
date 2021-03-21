@@ -9,15 +9,23 @@ function performValidation(order){
 async function validateOrder(order) {
     try {
         var sequelize = new Sequelize(
-            POSTGRES_CONNECTION_STRING, {}
+            POSTGRES_CONNECTION_STRING, {
+                operatorsAliases: false
+            }
         );
         var isValid = performValidation(order);
-        var res = await sequelize.query('UPDATE orders SET order_valid = :isValid WHERE order_id = :orderId',
-                                    { replacements: { isValid: isValid, orderId: order.order_id } }
-                                       );
+
+        console.info(`setting order '${order.order_id}' validity to '${isValid}'`)
+        var res = await sequelize.query(
+            'UPDATE orders SET order_valid = $isValid WHERE order_id = $orderId',
+            {   
+                type: Sequelize.QueryTypes.UPDATE,
+                bind: { isValid: isValid, orderId: order.order_id } 
+            }
+        );
         return res;
     } catch(e) {
-        console.log(e);
+        console.error(e);
         throw new Error(e);
     } finally {
 	    sequelize.close();

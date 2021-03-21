@@ -11,7 +11,10 @@ function getRandomDriver() {
 async function assignAgent(order){
     try {
         var sequelize = new Sequelize(
-            POSTGRES_CONNECTION_STRING, {}
+            POSTGRES_CONNECTION_STRING,
+            {
+                operatorsAliases: false
+            }
         );
         var driverId = getRandomDriver();
         var res = await sequelize.query('BEGIN;' +

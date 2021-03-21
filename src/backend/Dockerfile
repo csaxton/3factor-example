@@ -1,4 +1,4 @@
-FROM node:14.16-alpine3.13
+FROM node:12.21-alpine3.12
 
 COPY . /services
 

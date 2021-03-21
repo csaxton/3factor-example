@@ -5,7 +5,10 @@ const POSTGRES_CONNECTION_STRING = process.env.POSTGRES_CONNECTION_STRING || "po
 async function makePayment(paymentReq) {
     try {
         var sequelize = new Sequelize(
-            POSTGRES_CONNECTION_STRING, {}
+            POSTGRES_CONNECTION_STRING,
+            {
+                operatorsAliases: false
+            }
         );
         var res = await sequelize.query('BEGIN;' +
                                     'INSERT INTO payments(order_id, amount, type) values (:orderId, :amount, :type); ' +

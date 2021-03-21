@@ -5,7 +5,10 @@ const POSTGRES_CONNECTION_STRING = process.env.POSTGRES_CONNECTION_STRING || "po
 async function restaurantApproval(order) {
     try {
         var sequelize = new Sequelize(
-            POSTGRES_CONNECTION_STRING, {}
+            POSTGRES_CONNECTION_STRING,
+            {
+                operatorsAliases: false
+            }
         );
         var res = await sequelize.query('UPDATE orders SET approved = true WHERE order_id = :orderId',
                                     { replacements: { orderId: order.order_id } }
